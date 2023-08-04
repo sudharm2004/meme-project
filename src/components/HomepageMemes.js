@@ -1,16 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Memeitems from "./Memeitems";
+import MemeItems from "./MemeItems";
+import { memes_api } from "../utils/constants";
 
 function HomepageMemes() {
   const [memes, setmemes] = useState(null);
 
   useEffect(() => {
     const getMemes = async () => {
-      const response = await fetch("https://api.imgflip.com/get_memes");
+      const response = await fetch(memes_api);
       const responseData = await response.json();
       setmemes(responseData.data.memes);
-      // console.log(memes)
+      console.log(responseData);
       // memes.forEach(element => {
       //   console.log(element)
       // });
@@ -22,10 +23,10 @@ function HomepageMemes() {
   return (
     <>
       {memes && (
-        <div className="Memes flex flex-wrap bg-orange-50">
+        <div className="Memes flex flex-wrap bg-orange-50 justify-center">
           {memes.map((element) => {
             return (
-              <Memeitems
+              <MemeItems
                 key={element.id}
                 // name={element.name}
                 // url={element.url}

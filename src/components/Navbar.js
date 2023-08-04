@@ -1,5 +1,5 @@
 import React from "react";
-import MEME from "./MEME.png";
+import MEME from "../assets/imgs/MEME.png";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -13,10 +13,10 @@ function Navbar() {
       {/* <span className='text-lg font-mono flex items-center h-14 border-2 border-white p-1 w-52'>Find,Create and Share your memes</span> */}
       <div className="flex items-center">
         <Link
-          to="/editmeme"
+          to="/editmeme/your-own-meme"
           className="px-3 py-2 border-white border-2 rounded-md text-white  font-bold inline-block cursor-pointer hover:bg-orange-500"
         >
-          Create Meme
+          Create Your Own Meme
         </Link>
       </div>
     </div>
