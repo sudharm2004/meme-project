@@ -1,21 +1,26 @@
-import React, { useContext } from "react";
-import inputContext from "../utils/inputContext";
+import React, { useState, useEffect } from "react";
+import { useInputContext } from "../utils/inputContext";
 const Input = (props) => {
   const { id } = props;
-  const { inputList, setInputList } = useContext(inputContext);
+  const { deleteInput, updateInputText } = useInputContext();
+  const [text, setText] = useState("");
 
-  const deleteInput = () => {
-    console.log("inputlist in deleteinput ", inputList);
-    const updateList = inputList.filter((element) => element.props.id !== id);
-    setInputList(updateList);
-    console.log("updatelist in deleteinput ", updateList);
-  };
+  console.log(id);
+
+  useEffect(() => {
+    updateInputText(id, text);
+  }, [text]);
   return (
     <>
       <div className="flex space-x-2">
         <input
           placeholder={"enter the text" + id}
           className="p-2 border-2 rounded-md "
+          value={text}
+          onChange={(event) => {
+            setText(event.target.value);
+            console.log(text);
+          }}
         />
         <button
           className="text-red-500 border-2 p-2 rounded-md "
